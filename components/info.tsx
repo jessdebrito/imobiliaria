@@ -49,7 +49,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
       <h3 className="text-sm text-gray-500">{data.description}</h3>
 
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2">
+        <Button className="flex items-center gap-x-2 text-black bg-[var(--color-primary)] hover:text-[var(--color-gray-3)]">
           Adicionar ao carrinho
           <ShoppingCart />
         </Button>

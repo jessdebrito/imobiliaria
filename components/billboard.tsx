@@ -26,7 +26,7 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
             Locais planejados para atender as suas necessidade
           </h2>
           <Link href="/">
-            <Button className="text-base text-black hover:text-white bg-[var(--color-primary)] hover:bg-[var(--color-gray-2)] px-6 py-5 text-lg rounded-2xl">
+            <Button className=" text-black hover:text-white bg-[var(--color-primary)] hover:bg-[var(--color-gray-2)] px-6 py-5 text-lg rounded-2xl">
               Explorar mais
             </Button>
           </Link>

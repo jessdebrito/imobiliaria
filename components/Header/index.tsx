@@ -32,7 +32,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`flex items-center fixed top-0 left-0 w-full z-9 transition-all duration-700 px-4 md:px-14 flex py-2 items-center mx-auto ${
+      className={`flex items-center fixed top-0 left-0 w-full z-20 transition-all duration-700 px-4 md:px-14  py-2  mx-auto ${
         isTransparent
           ? "bg-transparent text-white"
           : "bg-[var(--color-gray-2)] text-white shadow-md"

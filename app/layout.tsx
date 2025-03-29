@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Property | Aluguel e venda de Casas, Apartamentos e Espaços Profissionais",
   description:
     "Encontre o imóvel ideal para morar ou trabalhar! Alugue casas, apartamentos e salas comerciais de forma rápida e segura.",
-};
+  };
 
 export default function RootLayout({
   children,

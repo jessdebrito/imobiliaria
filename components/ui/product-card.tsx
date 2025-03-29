@@ -9,26 +9,11 @@ import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
-import { HandshakeIcon } from "lucide-react";
+import { RulerIcon, ShowerHead, DoorClosed } from "lucide-react";
 
 interface ProductCard {
   data: Product;
 }
-const infoCard = [
-  {
-    title: "Comodos",
-    icon: HandshakeIcon,
-  },
-  {
-    title: "Banheiro",
-    icon: HandshakeIcon,
-  },
-  {
-    title: "Espaço",
-    icon: HandshakeIcon,
-  },
-];
-
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const cart = useCart();
   const previewModal = usePreviewModal();
@@ -80,15 +65,15 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
           </div>
         </div>
       </div>
-      {/* Description */}
-      <div>
+      <div className="px-6 py-2 my-4">
         <p className="text-lg font-semibold">{data?.name}</p>
-        <p className="text-sm text-gray-500">Comodos: {data.room.name}</p>
-        <p className="text-sm text-gray-500">Banheiro: {data.bathroom.name}</p>
-        <p className="text-sm text-gray-500">Tamanho: {data.size.name}</p>
-        <p className="text-lg font-semibold">
-          <Currency value={data?.price} />
-        </p>
+        <div className="flex items-center justify-start mt-4 gap-6">
+        <p className="text-sm text-gray-500"><DoorClosed size={20} className="inline-block text-gray-500" />{data.room.name}</p>
+        <p className="text-sm text-gray-500"><ShowerHead size={20} className="inline-block text-gray-500" />{data.bathroom.name}</p>
+        <p className="text-sm text-gray-500"><RulerIcon size={20} className="inline-block text-gray-500" />{data.size.name}</p>
+        </div>
+        <p className="text-lg text-gray-500">{data.location}</p>
+        <p className="text-lg font-semibold"><Currency value={data?.price} /></p>
       </div>
     </div>
   );

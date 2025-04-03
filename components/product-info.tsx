@@ -1,10 +1,6 @@
 import { Product } from "@/types";
 import {
-  RulerIcon,
   ShoppingCart,
-  DoorClosed,
-  ShowerHead,
-  Car,
   DotIcon,
 } from "lucide-react";
 import Currency from "@/components/ui/currency";

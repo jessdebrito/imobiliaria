@@ -12,7 +12,6 @@ const ProductList: React.FC<ProductListProps> = async ({
   title,
   items,
   subtitle,
-  isFeatured
 }) => {
 
 

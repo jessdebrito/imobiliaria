@@ -1,4 +1,3 @@
-import getCategory from "@/actions/get-category";
 import getBathrooms from "@/actions/get-bathrooms";
 import getRooms from "@/actions/get-rooms";
 import getAdtype from "@/actions/get-adtype";

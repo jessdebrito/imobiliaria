@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 
 import LogoWhiteLime from "@/public/white-lime-logo.svg";
 import NavbarActions from "./NavBar-actions";
@@ -72,7 +71,7 @@ export default function NavMenu() {
             <Bars3Icon aria-hidden="true" className="size-6" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12 flex items-center justify-center">
+        <PopoverGroup className="lg:flex lg:gap-x-12 flex items-center justify-center">
           <Popover className="relative">
             <PopoverButton className="flex items-center justify-center gap-x-1 text-2sm/8 font-semibold text-white">
               Detalhes
@@ -230,7 +229,7 @@ export default function NavMenu() {
               </div>
               <Link
                 href="/cart"
-                className="flex items-center mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
+                className="flex items-center mx-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
               >
                 Carrinho
                 <NavbarActions />

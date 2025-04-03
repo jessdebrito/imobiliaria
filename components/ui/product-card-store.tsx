@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { Product } from "@/types";
 import usePreviewModal from "@/hooks/use-preview-modal";
 
-import PreviewModal from "./../preview-modal";
 import useCart from "@/hooks/use-cart";
 import { Expand, ShoppingCart } from "lucide-react";
 import IconButton from "@/components/ui/icon-button";

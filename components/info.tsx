@@ -20,6 +20,9 @@ const Info: React.FC<InfoProps> = ({ data }) => {
       <div className="mt-3 flex items-end justify-between">
         <p className="text-2xl font-semibold text-gray-900">
           <Currency value={data?.price} />
+          <span className="text-xl text-gray-600">
+            {data.adtype.name === "Aluguel" ? "/mês" : ""}
+          </span>
         </p>
       </div>
       <hr className="my-4 text-gray-300" />

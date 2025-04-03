@@ -1,12 +1,12 @@
 "use client";
 import qs from "query-string";
-import { Adtype, Size, Bathroom, Room } from "@/types";
+import { Adtype, Size, Bathroom, Room, Category } from "@/types";
 import { cn } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import Button from "@/components/ui/button";
 
 interface FilterProps {
-  data: (Size | Adtype | Room | Bathroom)[];
+  data: (Size | Adtype | Room | Bathroom | Category)[];
   name: string;
   valueKey: string;
 }

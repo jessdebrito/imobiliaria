@@ -1,5 +1,18 @@
 import React from "react";
-import { Banknote, Building, House, KeyRound, ListCheck, ScrollText } from "lucide-react";
+import {
+  Banknote,
+  Building,
+  House,
+  KeyRound,
+  ListCheck,
+  ScrollText,
+} from "lucide-react";
+
+const headerWhyUs = {
+  title: "Motivos que nos destacam",
+  subtitle: "Por que escolher a Property?",
+  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+};
 
 const services = [
   {
@@ -39,25 +52,25 @@ const services = [
     icon: ListCheck,
   },
 ];
-export const ServicesSection = () => {
+
+export default function WhyUs() {
   return (
-    <section className="m-autopx-4 lg:px-14 py-30 lg:py-30 bg-[var(--color-gray-2)] text-[var(--color-gray-1)]">
-      <div className="px-6 flex flex-col justify-center items-start lg:flex-row">
+    <div className="bg-[var(--color-gray-3)] px-6 py-20 rounded-tl-4xl rounded-tr-4xl">
+      <div>
+        <h2 className="text-center tracking-wide text-white text-lg font-semibold uppercase mb-2">
+          {headerWhyUs.title}
+        </h2>
+        <h3 className="text-center tracking-wide text-white text-4xl font-semibold  mb-2">
+          {headerWhyUs.subtitle}
+        </h3>
+        <p className="text-center tracking-wide text-white text-2xl pb-6 mb-2">
+          {headerWhyUs.text}
+        </p>
+      </div>
 
-        <div className="lg:sticky lg:top-20 px-8 md:w-10/12 lg:w-4/12 mb-4">
-          <p className="text-lg uppercase font-bold">Serviços</p>
-          <h1 className="text-3xl text-[var(--color-primary)] font-bold">
-            O que fazemos de melhor
-          </h1>
-          <p className="text-base font-semibold">
-            From finding your ideal property to managing investments and
-            offering business space rentals.
-          </p>
-        </div>
-
-        <div className="md:w-9/12 lg:w-2/4 md:px-6 h-full pt-5">
-          <ul className="gap-4 items-center grid md:grid-cols-2 grid-cols-1">
-            {services.map((item) => (
+      <div className="flex md:flex-row items-center align-center py-10 px-10 flex-col mb-4">
+      <ul className="md:w-2/3 gap-4 grid md:grid-cols-3 grid-cols-1 mx-auto">
+      {services.map((item) => (
               <li
                 key={item.title}
                 className="relative rounded-lg text-2sm/8 mb-2"
@@ -72,15 +85,14 @@ export const ServicesSection = () => {
                   <h2 className="mb-4 text-2xl text-[var(--color-primary)] font-semibold">
                     {item.title}
                   </h2>
-                  <p className="text-lg font-medium">
+                  <p className="text-lg font-medium text-white">
                     {item.description}
                   </p>
                 </div>
               </li>
             ))}
-          </ul>
-        </div>
+            </ul>
       </div>
-    </section>
+    </div>
   );
-};
+}

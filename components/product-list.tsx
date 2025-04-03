@@ -6,12 +6,18 @@ interface ProductListProps {
   title: string;
   items: Product[];
   subtitle: string;
+  isFeatured: boolean;
 }
-const ProductList: React.FC<ProductListProps> = ({
+const ProductList: React.FC<ProductListProps> = async ({
   title,
   items,
   subtitle,
+  isFeatured
 }) => {
+
+
+
+
   return (
     <div className="space-y-4 px-1 lg:px-30 py-16 lg:py-20">
       <h2 className="text-center tracking-wide text-gray-600 text-xl uppercase -mb-1">
@@ -23,7 +29,7 @@ const ProductList: React.FC<ProductListProps> = ({
       {items.length === 0 && <NoResults />}
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {items.map((item) => (
-          <ProductCard key={item.id} data={item} />
+          <ProductCard key={item.id} data={item}/>
         ))}
       </div>
     </div>

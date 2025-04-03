@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Adtype, Size, Bathroom, Room } from "@/types";
+import { Adtype, Size, Bathroom, Room, Category } from "@/types";
 import { Plus, X } from "lucide-react";
 import { Dialog } from "@headlessui/react";
 import Filter from "./filter";
@@ -13,6 +13,7 @@ interface MobileFiltersProps {
   adtype: Adtype[];
   rooms: Room[];
   bathrooms: Bathroom[];
+  categories: Category[];
 }
 
 const MobileFilters: React.FC<MobileFiltersProps> = ({
@@ -20,6 +21,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
   adtype,
   bathrooms,
   rooms,
+  categories,
 }) => {
   const [open, setOpen] = useState(true);
   const onOpen = () => setOpen(true);
@@ -49,6 +51,11 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
             </div>
 
             <div className="p-4">
+              <Filter
+                valueKey="categoryId"
+                name="Categorias"
+                data={categories}
+              />
               <Filter valueKey="sizeId" name="Tamanho" data={sizes} />
               <Filter valueKey="bathroomId" name="Banheiros" data={bathrooms} />
               <Filter valueKey="roomId" name="Comodos" data={rooms} />

@@ -32,19 +32,19 @@ const products = [
   {
     name: "Apartamento",
     description: "Espaço planejados",
-    href: "#",
+    href: "/categoria/apartamento",
     icon: BuildingOffice2Icon,
   },
   {
     name: "Casa",
     description: "Viva premium",
-    href: "#",
+    href: "/categoria/casa",
     icon: HomeModernIcon,
   },
   {
     name: "Espaço comercial",
     description: "Local moderno",
-    href: "#",
+    href: "/categoria/espacocomercial",
     icon: BuildingStorefrontIcon,
   },
 ];

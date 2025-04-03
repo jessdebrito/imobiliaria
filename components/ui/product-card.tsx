@@ -68,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           </p>
         </div>
 
-        <div className="absolute w-full px-6 transition opacity-0 group-hover:opacity-100 bottom-5 z-10">
+        <div className="absolute w-full px-6 transition opacity-0 group-hover:opacity-100 bottom-5">
           <div className="flex justify-center gap-x-6">
             <IconButton
               onClick={onPreview}

@@ -3,6 +3,7 @@ import getRooms from "@/actions/get-rooms";
 import getAdtype from "@/actions/get-adtype";
 import getProducts from "@/actions/get-products";
 import getSizes from "@/actions/get-sizes";
+import { Metadata } from "next";
 
 import MobileFilters from "./components/mobile-filters";
 import Filter from "./components/filter";
@@ -13,13 +14,25 @@ import ProductCard from "@/components/ui/product-card";
 
 export const revalidate = 0;
 
-type Params = { categoryId: string };
-type SearchParams = {
+type Params = Promise<{ categoryId: string }>;
+type SearchParams = Promise<{
   sizeId?: string;
   adtypeId?: string;
   roomId?: string;
   bathroomId?: string;
-};
+}>;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { categoryId } = await params;
+  return {
+    title: `Categoria ${categoryId}`,
+    description: 'Explore nossa seleção de propriedades',
+  };
+}
 
 const CategoryPage = async ({
   params,
@@ -28,8 +41,8 @@ const CategoryPage = async ({
   params: Params;
   searchParams: SearchParams;
 }) => {
-  const { categoryId } = params;
-  const { bathroomId, roomId, adtypeId, sizeId } = searchParams;
+  const { categoryId } = await params;
+  const { bathroomId, roomId, adtypeId, sizeId } = await searchParams;
 
   const products = await getProducts({
     categoryId,

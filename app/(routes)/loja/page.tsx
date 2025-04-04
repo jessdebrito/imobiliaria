@@ -15,18 +15,17 @@ import getBillboard from "@/actions/get-billboard";
 
 export const revalidate = 0;
 
-interface StorePageProps {
-  searchParams: {
-    categoryId?: string;
-    sizeId?: string;
-    adtypeId?: string;
-    roomId?: string;
-    bathroomId?: string;
-  };
-}
+type SearchParams = Promise<{
+  categoryId?: string;
+  sizeId?: string;
+  adtypeId?: string;
+  roomId?: string;
+  bathroomId?: string;
+}>;
 
-const StorePage = async ({ searchParams }: StorePageProps) => {
-  const products = await getProducts(searchParams);
+const StorePage = async ({ searchParams }: { searchParams: SearchParams }) => {
+  const params = await searchParams;
+  const products = await getProducts(params);
   const sizes = await getSizes();
   const bathrooms = await getBathrooms();
   const rooms = await getRooms();

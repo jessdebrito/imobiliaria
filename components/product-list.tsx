@@ -6,17 +6,13 @@ interface ProductListProps {
   title: string;
   items: Product[];
   subtitle: string;
-  isFeatured: boolean;
+  isFeatured?: boolean;
 }
 const ProductList: React.FC<ProductListProps> = async ({
   title,
   items,
   subtitle,
 }) => {
-
-
-
-
   return (
     <div className="space-y-4 px-1 lg:px-30 py-16 lg:py-20">
       <h2 className="text-center tracking-wide text-gray-600 text-xl uppercase -mb-1">

@@ -32,7 +32,7 @@ const agentsList = [
 
 export default function AgentCard() {
   return (
-    <div className="w-11/12 py-10 mx-auto overflow-hidden">
+    <div id="corretores" className="w-11/12 py-10 mx-auto overflow-hidden">
       <div>
         <h2 className="text-center tracking-wide text-gray-600 text-xl font-bold uppercase -mb-1">
           {headerAgents.title}
@@ -49,7 +49,7 @@ export default function AgentCard() {
         >
           <div className="md:w-3/6 h-[400px] md:h-auto relative py-8">
             <Image
-              className="rounded-3xl object-cover"
+              className="rounded-3xl object-cover object-top"
               src={agent.img}
               alt={`Foto do agente ${agent.name}`}
               fill

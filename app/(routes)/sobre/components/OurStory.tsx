@@ -27,16 +27,16 @@ export default function OurStory() {
         </h3>
       </div>
      
-      <div className="flex md:flex-row flex-col mb-4">
-        <div className="md:w-1/2 md:px-20 md:py-10">
+      <div className="flex lg:flex-row flex-col mb-4">
+        <div className="lg:w-1/2 lg:px-20 lg:py-10">
 
         <Image src={ourStory.img} alt="Nossa equipe" width={800} height={1600}
         className="border rounded-4xl"/>
 
         </div>
-        <div className="md:w-1/2 px-20 py-10">
+        <div className="lg:w-1/2 px-20 py-10">
           <p className="uppercase text-black text-xl ">
-            Deste {ourStory.since}
+            Desde {ourStory.since}
           </p>
           <h1 className="text-4xl mb-5">{ourStory.title}</h1>
           <p className="w-4/5 mb-6">{ourStory.about}</p>

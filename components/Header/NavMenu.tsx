@@ -71,7 +71,7 @@ export default function NavMenu() {
             <Bars3Icon aria-hidden="true" className="size-6" />
           </button>
         </div>
-        <PopoverGroup className="lg:flex lg:gap-x-12 flex items-center justify-center">
+        <PopoverGroup className="hidden lg:flex lg:gap-x-12 items-center justify-center">
           <Popover className="relative">
             <PopoverButton className="flex items-center justify-center gap-x-1 text-2sm/8 font-semibold text-white">
               Detalhes
@@ -129,16 +129,16 @@ export default function NavMenu() {
           </Popover>
 
           <Link
-            href="/corretores"
-            className="text-2sm/8 font-semibold text-white hover:text-[var(--color-primary)]"
-          >
-            Corretores
-          </Link>
-          <Link
             href="/sobre"
             className="text-2sm/8 font-semibold text-white hover:text-[var(--color-primary)]"
           >
             Sobre
+          </Link>
+          <Link
+            href="/sobre#corretores"
+            className="text-2sm/8 font-semibold text-white hover:text-[var(--color-primary)]"
+          >
+            Corretores
           </Link>
           <Link
             href="/contato"
@@ -195,19 +195,19 @@ export default function NavMenu() {
                   </DisclosurePanel>
                 </Disclosure>
                 <Link
-                  href="/corretores"
-                  className="mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
-                >
-                  Corretores
-                </Link>
-                <Link
-                  href="#"
+                  href="/sobre"
                   className="mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
                 >
                   Sobre
                 </Link>
+                <Link
+                  href="/sobre#corretores"
+                  className="mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
+                >
+                  Corretores
+                </Link>
                 <a
-                  href="#"
+                  href="/contato"
                   className="mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
                 >
                   Contato
@@ -215,13 +215,13 @@ export default function NavMenu() {
               </div>
               <div className="py-6">
                 <Link
-                  href="/"
+                  href="/contato"
                   className="mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
                 >
                   Agendar Visita
                 </Link>
                 <Link
-                  href="/"
+                  href="/contato"
                   className="mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
                 >
                   Atendimento
@@ -229,7 +229,7 @@ export default function NavMenu() {
               </div>
               <Link
                 href="/cart"
-                className="flex items-center mx-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
+                className="block items-center mx-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:text-[var(--color-primary)]"
               >
                 Carrinho
                 <NavbarActions />

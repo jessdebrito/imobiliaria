@@ -1,6 +1,14 @@
-"use client";
-
+"use client"
 import { useState, FormEvent, ChangeEvent } from "react";
+import {
+  Mail,
+  User,
+  MessagesSquare,
+  Bookmark,
+  Send,
+  Loader2,
+} from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 type FormData = {
   name: string;
@@ -16,7 +24,8 @@ type FormErrors = {
   message?: string;
 };
 
-export default function ContactForm() {
+export default function ContactFormOption5() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -26,10 +35,6 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    success?: boolean;
-    message?: string;
-  }>({});
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -52,23 +57,23 @@ export default function ContactForm() {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = "Nome é obrigatório";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = "E-mail é obrigatório";
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = "Por favor, insira um e-mail válido";
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
+      newErrors.subject = "Assunto é obrigatório";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = "Mensagem é obrigatória";
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+      newErrors.message = "A mensagem deve ter pelo menos 10 caracteres";
     }
 
     setErrors(newErrors);
@@ -94,18 +99,18 @@ export default function ContactForm() {
         message: "",
       });
 
-      setSubmitStatus({
-        success: true,
-        message: "Agradecemos sua mensagem, em breve retornaremos.",
+      toast({
+        title: "Mensagem enviada com sucesso!",
+        description: "Agradecemos sua mensagem, em breve retornaremos.",
+        variant: "default",
+        className: "bg-green-50 border-green-200 text-green-800",
       });
-
-      setTimeout(() => {
-        setSubmitStatus({});
-      }, 5000);
     } catch {
-      setSubmitStatus({
-        success: false,
-        message: "Houve um erro ao enviar sua mensagem, por favor tente novamente.",
+      toast({
+        title: "Erro ao enviar",
+        description:
+          "Houve um erro ao enviar sua mensagem, por favor tente novamente.",
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -113,154 +118,154 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="bg-gradient-to-r from-teal-500 to-teal-600 py-6 px-6 md:px-8">
-        <h2 className="text-2xl font-bold text-white">Entre em contato</h2>
-        <p className="text-teal-100 mt-1">Não perca tempo e marque uma visita ao imóvel dos seus sonhos</p>
-      </div>
+    <div className="max-w-2xl mx-auto relative">
 
-      <div className="p-6 md:p-8">
-        {submitStatus.message && (
-          <div
-            className={`p-4 mb-6 rounded-md ${
-              submitStatus.success
-                ? "bg-green-50 text-green-700 border border-green-200"
-                : "bg-red-50 text-red-700 border border-red-200"
-            }`}
-          >
-            {submitStatus.message}
+      <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-amber-400 opacity-50"></div>
+      <div className="absolute -bottom-8 -right-8 w-24 h-24 rounded-full bg-amber-400 opacity-30"></div>
+      <div className="absolute top-1/3 -right-4 w-10 h-10 rounded-full bg-teal-400 opacity-40"></div>
+
+      <div className="backdrop-blur-sm bg-white/80 rounded-2xl border border-gray-100 shadow-xl overflow-hidden relative z-10">
+        <div className="bg-gradient-to-r from-amber-400 to-orange-500 p-8">
+          <div className="flex items-center space-x-2 mb-2">
+            <MessagesSquare className="w-6 h-6 text-amber-100" />
+            <h2 className="text-2xl font-bold text-white">Entre em contato</h2>
           </div>
-        )}
+          <p className="text-amber-100/90">
+            Estamos ansiosos para atender você
+          </p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Nome
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-150 ease-in-out ${
-                errors.name ? "border-red-300" : "border-gray-300"
-              }`}
-              placeholder="Seu nome"
-            />
-            {errors.name && (
-              <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              E-mail
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-150 ease-in-out ${
-                errors.email ? "border-red-300" : "border-gray-300"
-              }`}
-              placeholder="exemplo@email.com"
-            />
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="subject"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Assunto
-            </label>
-            <input
-              id="subject"
-              name="subject"
-              type="text"
-              value={formData.subject}
-              onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-150 ease-in-out ${
-                errors.subject ? "border-red-300" : "border-gray-300"
-              }`}
-              placeholder="Sobre o quê é a sua mensagem"
-            />
-            {errors.subject && (
-              <p className="mt-1 text-sm text-red-600">{errors.subject}</p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Mensagem
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              value={formData.message}
-              onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-150 ease-in-out ${
-                errors.message ? "border-red-300" : "border-gray-300"
-              }`}
-              placeholder="Escreva a sua mensagem aqui"
-            />
-            {errors.message && (
-              <p className="mt-1 text-sm text-red-600">{errors.message}</p>
-            )}
-          </div>
-
-          <div className="flex items-center justify-end">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="px-6 py-2 bg-teal-600 text-white font-medium rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition duration-150 ease-in-out disabled:opacity-70 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <span className="flex items-center">
-                  <svg
-                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Enviando...
-                </span>
-              ) : (
-                "Enviar"
+        <div className="p-8 backdrop-blur-sm">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="group">
+              <label
+                htmlFor="name"
+                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
+              >
+                <User className="w-4 h-4 mr-2 text-amber-500" />
+                <span>Nome</span>
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
+                  errors.name ? "border-red-300" : "border-gray-200"
+                }`}
+                placeholder="Seu nome completo"
+              />
+              {errors.name && (
+                <p className="mt-2 text-sm text-red-500 flex items-center">
+                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
+                  {errors.name}
+                </p>
               )}
-            </button>
-          </div>
-        </form>
+            </div>
+
+            <div className="group">
+              <label
+                htmlFor="email"
+                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
+              >
+                <Mail className="w-4 h-4 mr-2 text-amber-500" />
+                <span>E-mail</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
+                  errors.email ? "border-red-300" : "border-gray-200"
+                }`}
+                placeholder="exemplo@email.com"
+              />
+              {errors.email && (
+                <p className="mt-2 text-sm text-red-500 flex items-center">
+                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
+                  {errors.email}
+                </p>
+              )}
+            </div>
+
+            <div className="group">
+              <label
+                htmlFor="subject"
+                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
+              >
+                <Bookmark className="w-4 h-4 mr-2 text-amber-500" />
+                <span>Assunto</span>
+              </label>
+              <input
+                id="subject"
+                name="subject"
+                type="text"
+                value={formData.subject}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
+                  errors.subject ? "border-red-300" : "border-gray-200"
+                }`}
+                placeholder="Sobre o quê é a sua mensagem"
+              />
+              {errors.subject && (
+                <p className="mt-2 text-sm text-red-500 flex items-center">
+                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
+                  {errors.subject}
+                </p>
+              )}
+            </div>
+
+            <div className="group">
+              <label
+                htmlFor="message"
+                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
+              >
+                <MessagesSquare className="w-4 h-4 mr-2 text-amber-500" />
+                <span>Mensagem</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
+                  errors.message ? "border-red-300" : "border-gray-200"
+                }`}
+                placeholder="Escreva a sua mensagem aqui"
+              />
+              {errors.message && (
+                <p className="mt-2 text-sm text-red-500 flex items-center">
+                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
+                  {errors.message}
+                </p>
+              )}
+            </div>
+
+            <div className="flex justify-end pt-3">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-full hover:shadow-lg hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-70 flex items-center space-x-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Enviando...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    <span>Enviar mensagem</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

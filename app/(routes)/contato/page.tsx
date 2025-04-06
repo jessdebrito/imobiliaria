@@ -1,14 +1,22 @@
 import ContactForm from '@/components/contact-form'
 import React from 'react'
 
+const headerContact = {
+  title: "Contato",
+  subtitle: "Reserve o quanto antes e não perca o imóvel dos seus sonhos.",
+};
 export default function Contact() {
   return (
     <div className="container mx-auto py-12 px-4 md:px-6">
-    <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Entre em contato</h1>
-      <p className="text-gray-500 mb-8">Reserve o quanto antes e não perca o imóvel dos seus sonhos.</p>
+    <div>
+        <h2 className="mt-10  text-center tracking-wide text-gray-600 text-xl font-bold uppercase -mb-1">
+          {headerContact.title}
+        </h2>
+        <h3 className="text-center tracking-wide text-black text-3xl pb-6">
+          {headerContact.subtitle}
+        </h3>
+      </div>
       <ContactForm />
     </div>
-  </div>
 )
 }

@@ -49,7 +49,7 @@ export default function AgentCard() {
         >
           <div className="md:w-3/6 h-[400px] md:h-auto relative py-8">
             <Image
-              className="rounded-3xl object-cover object-top"
+              className="rounded-3xl object-cover object-center"
               src={agent.img}
               alt={`Foto do agente ${agent.name}`}
               fill

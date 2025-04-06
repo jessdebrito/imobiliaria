@@ -119,8 +119,8 @@ export default function ContactForm() {
   return (
     <div className="w-full max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       <div className="bg-gradient-to-r from-teal-500 to-teal-600 py-6 px-6 md:px-8">
-        <h2 className="text-2xl font-bold text-white">Get in Touch</h2>
-        <p className="text-teal-100 mt-1">We'd love to hear from you</p>
+        <h2 className="text-2xl font-bold text-white">Entre em contato</h2>
+        <p className="text-teal-100 mt-1">Não perca tempo e marque uma visita ao imóvel dos seus sonhos</p>
       </div>
 
       <div className="p-6 md:p-8">

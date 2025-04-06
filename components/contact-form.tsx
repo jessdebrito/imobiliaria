@@ -19,6 +19,10 @@ type FormErrors = {
   message?: string;
 };
 
+const headerContact = {
+  title: "Contato",
+  subtitle: "Reserve o quanto antes e não perca o imóvel dos seus sonhos.",
+};
 export default function ContactFormOption4() {
   const { toast } = useToast();
   const [formData, setFormData] = useState<FormData>({
@@ -113,6 +117,16 @@ export default function ContactFormOption4() {
 
   return (
     <div className="max-w-2xl mx-auto">
+      <div>
+        <h2 className="mt-10  text-center tracking-wide text-gray-600 text-xl font-bold uppercase -mb-1">
+          {headerContact.title}
+        </h2>
+        <h3 className="text-center tracking-wide text-black text-3xl pb-6">
+          {headerContact.subtitle}
+        </h3>
+      </div>
+
+
       <div className="rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
         <div className="bg-gradient-to-br from-[#f5ef50] via-[#f5ef50] to-[#e6dd47] p-8 text-gray-800 md:w-2/5 flex flex-col justify-center">
           <h2 className="text-2xl font-bold mb-4">Entre em contato</h2>

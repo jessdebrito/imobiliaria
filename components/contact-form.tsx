@@ -40,7 +40,6 @@ export default function ContactForm() {
       [name]: value,
     }));
 
-    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({
         ...prev,
@@ -86,10 +85,8 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Reset form after successful submission
       setFormData({
         name: "",
         email: "",
@@ -99,17 +96,16 @@ export default function ContactForm() {
 
       setSubmitStatus({
         success: true,
-        message: "Thank you! Your message has been sent successfully.",
+        message: "Agradecemos sua mensagem, em breve retornaremos.",
       });
 
-      // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus({});
       }, 5000);
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         success: false,
-        message: "There was a problem sending your message. Please try again.",
+        message: "Houve um erro ao enviar sua mensagem, por favor tente novamente.",
       });
     } finally {
       setIsSubmitting(false);
@@ -260,7 +256,7 @@ export default function ContactForm() {
                   Enviando...
                 </span>
               ) : (
-                "Send Message"
+                "Enviar"
               )}
             </button>
           </div>

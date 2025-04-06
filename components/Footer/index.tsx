@@ -70,7 +70,7 @@ export const Footer = () => {
               <ul className="font-medium">
                 <li className="mb-4">
                   <Link
-                    href="/propriedade"
+                    href="/loja"
                     className="hover:text-[var(--color-primary)]"
                   >
                     Apartamento
@@ -78,7 +78,7 @@ export const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    href="/propriedade"
+                    href="/loja"
                     className="hover:text-[var(--color-primary)]"
                   >
                     Casa
@@ -86,15 +86,7 @@ export const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    href="/propriedade"
-                    className="hover:text-[var(--color-primary)]"
-                  >
-                    Comércio
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    href="/propriedade"
+                    href="/loja"
                     className="hover:text-[var(--color-primary)]"
                   >
                     Sala comercial

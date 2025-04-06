@@ -1,14 +1,9 @@
 "use client"
+
 import { useState, FormEvent, ChangeEvent } from "react";
-import {
-  Mail,
-  User,
-  MessagesSquare,
-  Bookmark,
-  Send,
-  Loader2,
-} from "lucide-react";
+import { Mail, User, MessagesSquare, Bookmark, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 type FormData = {
   name: string;
@@ -24,7 +19,7 @@ type FormErrors = {
   message?: string;
 };
 
-export default function ContactFormOption5() {
+export default function ContactFormOption4() {
   const { toast } = useToast();
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -108,8 +103,7 @@ export default function ContactFormOption5() {
     } catch {
       toast({
         title: "Erro ao enviar",
-        description:
-          "Houve um erro ao enviar sua mensagem, por favor tente novamente.",
+        description: "Houve um erro ao enviar sua mensagem, por favor tente novamente.",
         variant: "destructive",
       });
     } finally {
@@ -118,154 +112,135 @@ export default function ContactFormOption5() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto relative">
-
-      <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-amber-400 opacity-50"></div>
-      <div className="absolute -bottom-8 -right-8 w-24 h-24 rounded-full bg-amber-400 opacity-30"></div>
-      <div className="absolute top-1/3 -right-4 w-10 h-10 rounded-full bg-teal-400 opacity-40"></div>
-
-      <div className="backdrop-blur-sm bg-white/80 rounded-2xl border border-gray-100 shadow-xl overflow-hidden relative z-10">
-        <div className="bg-gradient-to-r from-amber-400 to-orange-500 p-8">
-          <div className="flex items-center space-x-2 mb-2">
-            <MessagesSquare className="w-6 h-6 text-amber-100" />
-            <h2 className="text-2xl font-bold text-white">Entre em contato</h2>
+    <div className="max-w-2xl mx-auto">
+      <div className="rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+        <div className="bg-gradient-to-br from-[#f5ef50] via-[#f5ef50] to-[#e6dd47] p-8 text-gray-800 md:w-2/5 flex flex-col justify-center">
+          <h2 className="text-2xl font-bold mb-4">Entre em contato</h2>
+          <p className="mb-6 opacity-90">Não perca tempo e marque uma visita ao imóvel dos seus sonhos</p>
+          <div className="hidden md:block">
+            <div className="flex items-center mb-4">
+              <div className="bg-black/10 p-2 rounded-full mr-3">
+                <Mail className="h-5 w-5" />
+              </div>
+              <span className="text-sm">contato@exemplo.com</span>
+            </div>
+            <div className="flex items-center mb-4">
+              <div className="bg-black/10 p-2 rounded-full mr-3">
+                <User className="h-5 w-5" />
+              </div>
+              <span className="text-sm">(11) 98765-4321</span>
+            </div>
           </div>
-          <p className="text-amber-100/90">
-            Estamos ansiosos para atender você
-          </p>
         </div>
-
-        <div className="p-8 backdrop-blur-sm">
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="group">
-              <label
-                htmlFor="name"
-                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
-              >
-                <User className="w-4 h-4 mr-2 text-amber-500" />
-                <span>Nome</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
-                  errors.name ? "border-red-300" : "border-gray-200"
-                }`}
-                placeholder="Seu nome completo"
-              />
-              {errors.name && (
-                <p className="mt-2 text-sm text-red-500 flex items-center">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
-                  {errors.name}
-                </p>
-              )}
-            </div>
-
-            <div className="group">
-              <label
-                htmlFor="email"
-                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
-              >
-                <Mail className="w-4 h-4 mr-2 text-amber-500" />
-                <span>E-mail</span>
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
-                  errors.email ? "border-red-300" : "border-gray-200"
-                }`}
-                placeholder="exemplo@email.com"
-              />
-              {errors.email && (
-                <p className="mt-2 text-sm text-red-500 flex items-center">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
-                  {errors.email}
-                </p>
-              )}
-            </div>
-
-            <div className="group">
-              <label
-                htmlFor="subject"
-                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
-              >
-                <Bookmark className="w-4 h-4 mr-2 text-amber-500" />
-                <span>Assunto</span>
-              </label>
-              <input
-                id="subject"
-                name="subject"
-                type="text"
-                value={formData.subject}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
-                  errors.subject ? "border-red-300" : "border-gray-200"
-                }`}
-                placeholder="Sobre o quê é a sua mensagem"
-              />
-              {errors.subject && (
-                <p className="mt-2 text-sm text-red-500 flex items-center">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
-                  {errors.subject}
-                </p>
-              )}
-            </div>
-
-            <div className="group">
-              <label
-                htmlFor="message"
-                className="flex items-center text-sm font-medium mb-2 text-gray-700 group-focus-within:text-amber-600 transition-colors"
-              >
-                <MessagesSquare className="w-4 h-4 mr-2 text-amber-500" />
-                <span>Mensagem</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-lg bg-white/50 backdrop-blur-sm border focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200 ${
-                  errors.message ? "border-red-300" : "border-gray-200"
-                }`}
-                placeholder="Escreva a sua mensagem aqui"
-              />
-              {errors.message && (
-                <p className="mt-2 text-sm text-red-500 flex items-center">
-                  <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5"></span>
-                  {errors.message}
-                </p>
-              )}
-            </div>
-
-            <div className="flex justify-end pt-3">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-full hover:shadow-lg hover:translate-y-[-2px] focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-70 flex items-center space-x-2"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    <span>Enviando...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    <span>Enviar mensagem</span>
-                  </>
+        <Card className="border-0 shadow-none flex-1 rounded-none bg-white">
+          <CardContent className="p-8">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="flex items-center text-sm font-medium text-gray-700 mb-1.5">
+                  <User className="w-4 h-4 mr-2 text-[#f5ef50]" />
+                  <span>Nome</span>
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#f5ef50] focus:border-transparent transition ${
+                    errors.name ? "border-red-300" : "border-gray-200"
+                  }`}
+                  placeholder="Seu nome completo"
+                />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                 )}
-              </button>
-            </div>
-          </form>
-        </div>
+              </div>
+
+              <div>
+                <label className="flex items-center text-sm font-medium text-gray-700 mb-1.5">
+                  <Mail className="w-4 h-4 mr-2 text-[#f5ef50]" />
+                  <span>E-mail</span>
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#f5ef50] focus:border-transparent transition ${
+                    errors.email ? "border-red-300" : "border-gray-200"
+                  }`}
+                  placeholder="exemplo@email.com"
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="flex items-center text-sm font-medium text-gray-700 mb-1.5">
+                  <Bookmark className="w-4 h-4 mr-2 text-[#f5ef50]" />
+                  <span>Assunto</span>
+                </label>
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#f5ef50] focus:border-transparent transition ${
+                    errors.subject ? "border-red-300" : "border-gray-200"
+                  }`}
+                  placeholder="Sobre o quê é a sua mensagem"
+                />
+                {errors.subject && (
+                  <p className="mt-1 text-sm text-red-500">{errors.subject}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="flex items-center text-sm font-medium text-gray-700 mb-1.5">
+                  <MessagesSquare className="w-4 h-4 mr-2 text-[#f5ef50]" />
+                  <span>Mensagem</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#f5ef50] focus:border-transparent transition ${
+                    errors.message ? "border-red-300" : "border-gray-200"
+                  }`}
+                  placeholder="Escreva a sua mensagem aqui"
+                />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                )}
+              </div>
+
+              <CardFooter className="px-0 pt-4 flex justify-end">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-6 py-2.5 bg-[#f5ef50] text-gray-800 font-medium rounded-lg hover:bg-[#e6dd47] focus:outline-none focus:ring-2 focus:ring-[#f5ef50] focus:ring-offset-2 transition disabled:opacity-70 flex items-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Enviando...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Enviar mensagem</span>
+                    </>
+                  )}
+                </button>
+              </CardFooter>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

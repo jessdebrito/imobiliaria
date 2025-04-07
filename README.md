@@ -1,6 +1,16 @@
 # Property Imobiliária - Site Institucional e Catálogo de Imóveis
 
+<div align="center">
+<a href="https://property-imobiliaria.vercel.app/">
+<img src="public/readme-banner.png">
+</a>
+<p><a href="https://property-imobiliaria.vercel.app/">
+Visualizar Prévia
+</a></p>
+</div>
+
 Este é um projeto de portfólio que apresenta a Property Imobiliária, uma organização fictícia especializada em aluguel e venda de propriedades. A plataforma oferece uma experiência moderna e interativa para os usuários conhecerem os serviços, sua equipe, áreas de atuação e imóveis disponíveis.
+
 
 ## 🚀 Tecnologias Utilizadas
 

@@ -34,7 +34,7 @@ Este é um projeto de portfólio que apresenta a Property Imobiliária, uma orga
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/imobiliaria.git
+git clone https://github.com/jessdebrito/imobiliaria.git
 cd imobiliaria
 ```
 

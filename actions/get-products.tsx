@@ -18,16 +18,6 @@ interface Query {
   addSpace?: boolean;
   builtYear?: string;
   renovationYear?: string;
-
-  /* heating?: boolean;
-  airConditioning?: boolean;
-  fireplace?: boolean;
-  ventilation?: boolean;
-  intercom?: boolean;
-  cableTv?: boolean;
-  elevator?: boolean;
-  internet?: boolean; */
-
   isArchived?: boolean;
 }
 
@@ -49,16 +39,6 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       addSpace: query.addSpace,
       builtYear: query.builtYear,
       renovationYear: query.renovationYear,
-
-/*       heating: query.heating,
-      airConditioning: query.airConditioning,
-      fireplace: query.fireplace,
-      ventilation: query.ventilation,
-      intercom: query.intercom,
-      cableTv: query.cableTv,
-      elevator: query.elevator,
-      internet: query.internet, */
-
       isArchived: query.isArchived,
     },
   });

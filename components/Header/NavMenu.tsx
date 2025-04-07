@@ -52,19 +52,32 @@ const callsToAction = [
   { name: "Entrar em contato", href: "#", icon: PhoneIcon },
 ];
 
-export default function NavMenu() {
+interface NavMenuProps {
+  onMobileMenuToggle?: (isOpen: boolean) => void;
+}
+
+export default function NavMenu({ onMobileMenuToggle }: NavMenuProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleMobileMenuToggle = (isOpen: boolean) => {
+    setMobileMenuOpen(isOpen);
+    if (onMobileMenuToggle) {
+      onMobileMenuToggle(isOpen);
+    }
+  };
 
   return (
     <>
       <nav
         aria-label="Global"
-        className="mx-auto flex  max-w-7xl  justify-between p-2 lg:px-8"
+        className={`mx-auto flex max-w-7xl justify-between p-2 lg:px-8 ${
+          mobileMenuOpen ? 'hidden lg:flex' : 'flex'
+        }`}
       >
         <div className="flex lg:hidden">
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={() => handleMobileMenuToggle(true)}
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
           >
             <span className="sr-only">Abrir menu</span>
@@ -151,11 +164,11 @@ export default function NavMenu() {
       </nav>
       <Dialog
         open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
+        onClose={() => handleMobileMenuToggle(false)}
         className="lg:hidden"
       >
-        <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[var(--color-gray-2)] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="fixed inset-0 z-20 bg-black bg-opacity-50" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-[var(--color-gray-2)] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <span className="sr-only">property</span>
             <Link href={"/"}>
@@ -163,7 +176,7 @@ export default function NavMenu() {
             </Link>
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => handleMobileMenuToggle(false)}
               className="-m-2.5 rounded-md p-2.5 text-[var(--color-primary)]"
             >
               <span className="sr-only">Fechar menu</span>

@@ -71,7 +71,7 @@ export default function NavMenu({ onMobileMenuToggle }: NavMenuProps) {
       <nav
         aria-label="Global"
         className={`mx-auto flex max-w-7xl justify-between p-2 lg:px-8 ${
-          mobileMenuOpen ? 'hidden lg:flex' : 'flex'
+          mobileMenuOpen ? "hidden lg:flex" : "flex"
         }`}
       >
         <div className="flex lg:hidden">

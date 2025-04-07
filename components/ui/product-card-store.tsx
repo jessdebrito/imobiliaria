@@ -60,12 +60,10 @@ const ProductCardStore: React.FC<ProductCardStore> = ({ data }) => {
           </div>
         </div>
       </div>
-      {/* Description */}
       <div>
         <p className="text-lg font-semibold">{data?.name}</p>
         <p className="text-sm text-gray-500">{data.category.name}</p>
       </div>
-      {/* Price */}
       <div className="flex items-center justify-between">
         <Currency value={data?.price} />
       </div>

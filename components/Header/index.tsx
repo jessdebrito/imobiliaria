@@ -10,6 +10,7 @@ import LogoWhiteLime from "@/public/white-lime-logo.svg";
 
 export const Header = () => {
   const [isTransparent, setIsTransparent] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -32,11 +33,11 @@ export const Header = () => {
 
   return (
     <header
-      className={`flex items-center fixed top-0 left-0 w-full z-15 transition-all duration-700 px-4 md:px-14  py-2  mx-auto ${
+      className={`flex items-center fixed top-0 left-0 w-full z-15 transition-all duration-700 px-4 md:px-14 py-2 mx-auto ${
         isTransparent
           ? "bg-transparent text-white"
           : "bg-[var(--color-gray-2)] text-white shadow-md"
-      }`}
+      } ${isMobileMenuOpen ? "lg:flex hidden" : "flex"}`}
     >
       <div className="flex items-center justify-between w-full mx-auto">
         <Link
@@ -49,7 +50,7 @@ export const Header = () => {
           property
         </Link>
       </div>
-      <NavMenu />
+      <NavMenu onMobileMenuToggle={setIsMobileMenuOpen} />
     </header>
   );
 };

@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <ToastProvider />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
